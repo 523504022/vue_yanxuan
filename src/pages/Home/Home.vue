@@ -6,7 +6,7 @@
           <img src="./img/yanxuan.png" alt>
         </h1>
       </div>
-      <div class="search">
+      <div class="search" @click="$router.push('/search')">
         <i class="iconfont icon-search"></i>
         <span>搜索商品,共21909款好物</span>
       </div>
@@ -258,7 +258,7 @@ export default {
         el: '#swiper2 .swiper-pagination',
       }
     })
-  }
+  },
 }  
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>

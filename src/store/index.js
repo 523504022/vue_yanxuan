@@ -5,11 +5,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // 引入各个模块的vuex文件
 import fenlei from './modules/fenlei'
+import search from './modules/search'
 // 声明使用vuex
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules:{
-    fenlei
+    fenlei,
+    search
   }
 })

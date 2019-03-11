@@ -1,7 +1,7 @@
 <template>
   <div class="fenlei">
     <div class="header">
-      <div class="search">
+      <div class="search" @click="$router.push('/search')">
         <i class="iconfont icon-search"></i>
         <span>搜索商品,共21888款好物</span>
       </div>
@@ -14,19 +14,20 @@
         </li>
       </ul>
     </div>
-    <router-view :list="list" />
+    <router-view :list="list" :fenleiImg="fenleiImg"/>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
 import {mapState} from 'vuex'
-import { version } from 'punycode';
 export default {
   data () {
     return {
       xuanzhong:0,
-      list: []
+      list: [],
+      num:0,
+      fenleiImg:''
     }
   },
   mounted () {
@@ -34,6 +35,12 @@ export default {
     new BScroll('.classify',{
       click:true
     })
+  },
+
+  updated(){
+    // 指定二级路由显示内容
+    this.list = this.fenlei.categoryL1List[this.num].subCateList
+    this.fenleiImg = this.fenlei.categoryL1List[this.num].wapBannerUrl
   },
 
   computed:{
@@ -44,8 +51,9 @@ export default {
 
   methods:{
     bianse(index){
+      // 点击变色，指定传递给二级路由的数组对象是哪一个
       this.xuanzhong = index
-      this.list = this.fenlei.categoryL1List[index].subCateList
+      this.num = index
     }
   },
 }

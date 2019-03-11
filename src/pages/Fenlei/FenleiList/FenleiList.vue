@@ -1,7 +1,7 @@
 <template>
   <div class="bsCrollWarp">
     <div class="content">
-      <img class="titleImg" src="../img/ebf42d9334b2e23c009313eb097aadd2.jpg" alt>
+      <img class="titleImg" :src="fenleiImg" alt>
       <ul class="contentWarp">
         <li v-for="(item,index) in list" :key="index">
           <img :src="item.wapBannerUrl" alt>
@@ -16,7 +16,8 @@
 import BScroll from 'better-scroll'
 export default {
   props: {
-    list: ''
+    list: Array,
+    fenleiImg:''
   },
   mounted() {
     new BScroll('.bsCrollWarp', {
@@ -28,7 +29,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 .bsCrollWarp{
   width: 528px;
-  height: 600px;
+  height: 1148px;
   float: left;
   margin-left: 30px;
   .content {
@@ -43,14 +44,13 @@ export default {
     .contentWarp {
       width: 100%;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
 
       li {
         width: 144px;
         height: 216px;
         text-align: center;
-
+        margin-right 32px
         img {
           width: 144px;
           height: 144px;

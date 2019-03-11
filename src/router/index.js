@@ -6,6 +6,7 @@ import Fenlei from '../pages/Fenlei/Fenlei.vue'
 import Shiwu from '../pages/Shiwu/Shiwu.vue'
 import ShopCar from '../pages/ShopCar/ShopCar.vue'
 import User from '../pages/User/User.vue'
+import Search from '../pages/Search/Search.vue'
 
 import FenleiList from '../pages/Fenlei/FenleiList/FenleiList.vue'
 
@@ -58,6 +59,10 @@ export default new Router({
       meta: {
         showFooter: false
       }
+    },
+    {
+      path: '/search',
+      component: Search,
     },
     {
       // 设置默认跳转到home路由
