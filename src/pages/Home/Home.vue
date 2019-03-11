@@ -10,7 +10,7 @@
         <i class="iconfont icon-search"></i>
         <span>搜索商品,共21909款好物</span>
       </div>
-      <div class="denglu">登录</div>
+      <div class="denglu" @click="$router.replace('/user')">登录</div>
     </div>
     <nav class="nav">
       <ul>
@@ -32,7 +32,7 @@
       </div>
     </nav>
     <div class="lunbo">
-      <div class="swiper-container">
+      <div class="swiper-container" id="swiper1">
         <ul class="swiper-wrapper">
           <li class="swiper-slide">
             <a href="javascript:;">
@@ -179,7 +179,7 @@
     </div>
     <div class="siren">
       <p>私人定制</p>
-      <div class="swiper-container" id="swiper1">
+      <div class="swiper-container" id="swiper2">
         <ul class="swiper-wrapper">
           <div class="swiper-slide">
             <li>
@@ -245,16 +245,17 @@ import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
 export default {
   mounted() {
-    let swiperLunbo = new Swiper('.swiper-container', {
+    let swiperLunbo = new Swiper('#swiper1', {
+      loop:true,
       scrollbar: {
-        el: '.swiper-container .swiper-scrollbar',
+        el: '#swiper1 .swiper-scrollbar',
         hide: true,
       },
     })
-    let swiper1  = new Swiper('#swiper1', {
-      //loop: true,
+    let swiper1  = new Swiper('#swiper2', {
+      loop: true,
       pagination: {
-        el: '#swiper1 .swiper-pagination',
+        el: '#swiper2 .swiper-pagination',
       }
     })
   }

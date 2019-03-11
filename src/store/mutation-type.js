@@ -1,0 +1,1 @@
+export const RECEIVE_FENLEI = 'receive_fenlei'  //接收分类信息

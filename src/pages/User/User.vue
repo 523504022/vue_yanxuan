@@ -22,7 +22,7 @@
       <div class="logowrap">
         <img src="./img/logo.png" alt>
       </div>
-      <div class="ipone">
+      <div class="ipone" @click="shoujiGo">
         <div class="text">
           <i class="iconfont icon-shouji"></i>
           <span>手机号码登录</span>
@@ -39,15 +39,22 @@
       </div>
       <img src="./img/denglu.png" alt>
     </div>
-    <div>
+    <div v-else>
       <div class="zhuce_logo">
         <img src="./img/logo.png" alt="">
       </div>
-      <input type="text" placeholder="请输入手机号">
+      <input type="text" placeholder="请输入手机号" v-model="shoujiNum">
       <div class="more"></div>
       <input type="text" placeholder="请输入短信验证码">
       <div class="more"></div>
       <div class="button">获取验证码</div>
+      <div class="go">
+        <span>登录</span>
+      </div>
+      <div class="qita">
+        <span>其他方式登录</span>
+      </div>
+      <div class="zhuce_zhuce">注册账号 ></div>
     </div>
   </div>
 </template>
@@ -56,12 +63,16 @@
 export default {
   data() {
     return {
-      iFshow: false
+      iFshow: true,
+      shoujiNum:''
     }
   },
   methods: {
     goTo(path) {
       this.$router.replace(path)
+    },
+    shoujiGo(){
+      this.iFshow = !this.iFshow
     }
   }
 }
@@ -263,14 +274,51 @@ export default {
     background-color #000  
   }
   .button {
+    position absolute
+    top 580px
+    left 500px
     width 190px
-    height 65px
+    height 62px
     background-color #fff
     border 1px solid #000
     border-radius 10px
     text-align center
     font-size 30px
     line-height 60px
+  }
+  .go {
+    width: 90%;
+    height: 95px;
+    margin: 100px auto 0;
+    background-color #b4282d
+    border-radius 15px
+    span {
+      float: left;
+      margin-left: 312px;
+      font-size: 30px;
+      color: #fff;
+      line-height: 90px;
+    }
+  }
+  .qita {
+    width: 90%;
+    height: 95px;
+    margin: 20px auto 0;
+    background-color #fff
+    border-radius 15px
+    border 1px solid #b4282d
+    span {
+      float: left;
+      margin-left: 258px;
+      font-size: 30px;
+      color: #b4282d;
+      line-height: 90px;
+    }
+  }
+  .zhuce_zhuce{
+    font-size 32px
+    margin-top 20px
+    margin-left 305px
   }
 }
 </style>
