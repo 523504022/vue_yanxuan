@@ -3,7 +3,7 @@
     <div class="header">
       <div class="search">
         <i class="iconfont icon-search"></i>
-        <input type="text" placeholder="请输入短信验证码">
+        <input type="text" :placeholder="remen.defaultKeyword.keyword">
       </div>
       <a href="javascript:;" class="quxiao" @click="$router.back()">取消</a>
     </div>

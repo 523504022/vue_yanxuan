@@ -5,3 +5,5 @@ const prefix = '/api'
 export const reqFenlei = () => ajax('/fenlei')
 // 获取热门搜索数据
 export const reqRemen = () => ajax(`${prefix}/xhr/search/init.json`,'POST')
+// 获取首页数据
+export const reqHome =() => ajax('/home')

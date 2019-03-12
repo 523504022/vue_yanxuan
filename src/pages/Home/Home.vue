@@ -13,20 +13,20 @@
       <div class="denglu" @click="$router.replace('/user')">登录</div>
     </div>
     <nav class="nav">
-      <ul>
-        <li class="tuijian">
-          <a href="javascript:;">推荐</a>
-        </li>
-        <li>
-          <a href="javascript:;">居家生活</a>
-        </li>
-        <li>
-          <a href="javascript:;">服饰鞋包</a>
-        </li>
-        <li>
-          <a href="javascript:;">美食酒水</a>
-        </li>
-      </ul>
+      <div class="header-nav-some-wrap">
+        <div class="header-nav-some" v-if="home.kingKongModule">
+          <a href="javascript:;" class="active">
+            <span>推荐</span>
+          </a>
+          <a
+            href="javascript:;"
+            v-for="(item,index) in home.kingKongModule.kingKongList"
+            :key="index"
+          >
+            <span>{{item.text}}</span>
+          </a>
+        </div>
+      </div>
       <div class="mask">
         <i class="iconfont icon-zhankai"></i>
       </div>
@@ -62,67 +62,12 @@
       <img src="./img/title.png" alt>
     </div>
     <div class="fenlei">
-      <ul>
-        <li>
+      <ul v-if="home.kingKongModule">
+        <li v-for="(item,index) in home.kingKongModule.kingKongList"
+            :key="index">
           <a href="jacascirpt:;">
-            <img src="./img/fenlei/1.png" alt>
-            <span>居家生活</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/2.png" alt>
-            <span>服饰鞋包</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/3.png" alt>
-            <span>美食酒水</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/4.png" alt>
-            <span>个护清洁</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/5.png" alt>
-            <span>限时购</span>
-          </a>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/6.png" alt>
-            <span>母婴亲子</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/7.png" alt>
-            <span>运动旅行</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/8.png" alt>
-            <span>数码家电</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/9.png" alt>
-            <span>礼品特色</span>
-          </a>
-        </li>
-        <li>
-          <a href="jacascirpt:;">
-            <img src="./img/fenlei/10.png" alt>
-            <span>超级会员</span>
+            <img :src="item.picUrl" alt>
+            <span>{{item.text}}</span>
           </a>
         </li>
       </ul>
@@ -143,93 +88,32 @@
     <div class="yuangong">
       <img src="./img/yuangong.png" alt>
     </div>
-    <div class="paihang">
-      <div class="guanlicontent">
+    <div class="paihang" v-if="home.sceneLightShoppingGuideModule">
+      <div class="guanlicontent" 
+      v-for="(item,index) in home.sceneLightShoppingGuideModule"
+      :key="index">
         <div class="content">
-          <p class="top">女王の专属美食阁</p>
-          <p class="bottom">3件75折/每满150减30</p>
+          <p class="top">{{item.styleItem.title}}</p>
+          <p class="bottom">{{item.styleItemdesc}}</p>
+          <img v-for="(img,index) in item.styleItem.itemPicBeanList"
+          :src="img.picUrl" 
+          :key="index"
+          alt> 
         </div>
-        <img src="./img/paihang/1.png" alt>
-        <img src="./img/paihang/2.png" alt>
-      </div>
-      <div class="guanlicontent">
-        <div class="content">
-          <p class="top">2019明前龙井</p>
-          <p class="bottom">预售好价75折</p>
-        </div>
-        <img src="./img/paihang/3.png" alt>
-        <img src="./img/paihang/4.png" alt>
-      </div>
-      <div class="guanlicontent">
-        <div class="content">
-          <p class="top">按摩神器大赏</p>
-          <p class="bottom">仿真人手按摩</p>
-        </div>
-        <img src="./img/paihang/5.png" alt>
-        <img src="./img/paihang/6.png" alt>
-      </div>
-      <div class="guanlicontent">
-        <div class="content">
-          <p class="top">热销百强榜</p>
-          <p class="bottom">全站实时更新</p>
-        </div>
-        <img src="./img/paihang/7.png" alt>
-        <img src="./img/paihang/8.png" alt>
       </div>
     </div>
     <div class="siren">
       <p>私人定制</p>
       <div class="swiper-container" id="swiper2">
         <ul class="swiper-wrapper">
-          <div class="swiper-slide">
-            <li>
-              <img src="./img/siren/1.jpg" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-            <li>
-              <img src="./img/siren/2.jpg" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-            <li>
-              <img src="./img/siren/3.png" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-          </div>
-          <div class="swiper-slide">
-            <li>
-              <img src="./img/siren/4.png" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-            <li>
-              <img src="./img/siren/5.png" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-            <li>
-              <img src="./img/siren/6.png" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-          </div>
-          <div class="swiper-slide">
-            <li>
-              <img src="./img/siren/1.jpg" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-            <li>
-              <img src="./img/siren/3.png" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
-            </li>
-            <li>
-              <img src="./img/siren/6.png" alt>
-              <span>日式和风声波式电动牙刷 （啊啊啊）</span>
-              <b>￥295</b>
+          <div class="swiper-slide" 
+          v-for="(items,index) in sirendingzhi"
+          :key="index"
+          >
+            <li v-for="(item,index) in items" :key="index">
+              <img :src="item.primaryPicUrl" alt>
+              <span>{{item.name}}</span>
+              <b>￥{{item.retailPrice}}</b>
             </li>
           </div>
         </ul>
@@ -243,22 +127,62 @@
 <script>
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
+import { mapState } from 'vuex'
+import BScroll from 'better-scroll'
 export default {
   mounted() {
     let swiperLunbo = new Swiper('#swiper1', {
-      loop:true,
+      loop: true,
       scrollbar: {
         el: '#swiper1 .swiper-scrollbar',
         hide: true,
       },
     })
-    let swiper1  = new Swiper('#swiper2', {
+    let swiper1 = new Swiper('#swiper2', {
       loop: true,
       pagination: {
         el: '#swiper2 .swiper-pagination',
       }
     })
+
+    this.$store.dispatch('getHome')
   },
+  computed: {
+    ...mapState({
+      home: state => state.home.home
+    }),
+    sirendingzhi(){
+      const  {home}  = this
+      if(home.personalShop){
+        const personalShop = home.personalShop
+        const len = personalShop.length
+        let size = 3
+        let newArr = []
+        // 按照指定大小切割数组 每size个切割成一个新数组
+        for (var i = 0; i < len; i += size) {
+          let arr = personalShop.slice(i, i + size)
+          newArr.push(arr)
+        }
+        return newArr
+      }
+    }
+  },
+  methods: {
+    _initScroll() {
+      new BScroll('.header-nav-some-wrap', {
+        click: true,
+        scrollX: true
+      })
+    }
+  },
+  watch:{
+    // 数据来了再调用BScroll
+    home(){
+      this.$nextTick(() => {
+        this._initScroll()
+      })
+    }
+  }
 }  
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
@@ -323,47 +247,42 @@ export default {
 .nav {
   background-color: #fff;
   margin-top: 89px;
-  width: 100%;
-  height: 60px;
+  width: 650px;
+  height: 45px;
 
-  ul {
+  .header-nav-some-wrap {
+    flex: 5;
     display: flex;
-    float: left;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 100%;
-    width: 83%;
+    overflow: hidden;
 
-    .tuijian {
-      width: 88px;
-      border-bottom: 4px solid #b4282d;
-      margin-left: 30px;
+    .header-nav-some {
+      white-space: nowrap;
+      display: flex;
+      height: 100%;
 
       a {
-        color: #b4282d;
-      }
-    }
+        flex: 1 0 auto;
+        margin-left: 0.26667rem;
+        padding: 5px 0.21333rem;
+        text-align: center;
+        color: #333;
+        font-size: 0.37333rem;
 
-    li {
-      text-align: center;
-      margin-bottom: 15px;
-      border-bottom: 4px solid rgba(0, 0, 0, 0);
-
-      a {
-        display: block;
-        margin-bottom: 10px;
-        padding-bottom: 2px;
-        font-size: 28px;
-        color: black;
+        &.active {
+          color: #b4282d;
+          border-bottom: 4px solid #b4282d;
+        }
       }
     }
   }
 
   .mask {
-    float: right;
-    width: 30px;
-    height: 30px;
-    margin-right: 22px;
+    position: absolute;
+    background-color: #fff;
+    top: 89px;
+    right: 0px;
+    width: 70px;
+    height: 45px;
 
     i {
       font-size: 35px;
@@ -405,14 +324,14 @@ export default {
   ul {
     width: 95%;
     height: 50%;
-    margin: 0 auto;
+    margin-left 40px
     display: flex;
-    justify-content: space-between;
+    flex-wrap wrap
 
     li {
       text-align: center;
-      margin: 10px 0 9px 0;
-
+      margin: 10px 30px 9px 0;
+      
       img {
         width: 110px;
         height: 110px;
@@ -474,6 +393,11 @@ export default {
     .bottom {
       color: #999;
     }
+
+    img {
+      width 150px
+      height 150px
+    }
   }
 }
 
@@ -494,8 +418,8 @@ export default {
     margin-top: 30px;
     width: 100%;
     height: 300px;
-    // display: flex;
 
+    // display: flex;
     .swiper-slide {
       width: 100%;
       height: 100%;
