@@ -25,7 +25,7 @@
     <a
       href="javascript:;"
       class="guide_item"
-      :class="{on: $route.path === '/shiwu'}"
+      :class="{on: $route.path === '/shiwu/tab/0'}"
       @click="goTo('/shiwu')"
     >
       <span class="item_icon">

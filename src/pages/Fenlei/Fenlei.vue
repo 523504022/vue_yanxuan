@@ -9,7 +9,7 @@
     <div class="classify">
       <ul>
         <li v-for="(item,index) in fenlei.categoryL1List" :key="index"
-         @click="bianse(index)" :class="xuanzhong===index?'active':''">
+         @click="bianse(index)" :class="num===index?'active':''">
           <a href="javascript:;">{{item.name}}</a>
         </li>
       </ul>
@@ -24,7 +24,6 @@ import {mapState} from 'vuex'
 export default {
   data () {
     return {
-      xuanzhong:0,
       list: [],
       num:0,
       fenleiImg:''
@@ -52,7 +51,6 @@ export default {
   methods:{
     bianse(index){
       // 点击变色，指定传递给二级路由的数组对象是哪一个
-      this.xuanzhong = index
       this.num = index
     }
   },

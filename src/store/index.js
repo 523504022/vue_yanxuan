@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 import fenlei from './modules/fenlei'
 import search from './modules/search'
 import home from './modules/home'
+import shiwu from './modules/shiwu'
 // 声明使用vuex
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   modules:{
     fenlei,
     search,
-    home
+    home,
+    shiwu
   }
 })

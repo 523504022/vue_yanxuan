@@ -9,6 +9,7 @@ import User from '../pages/User/User.vue'
 import Search from '../pages/Search/Search.vue'
 
 import FenleiList from '../pages/Fenlei/FenleiList/FenleiList.vue'
+import ShiwuTab from '../pages/Shiwu/ShiwuTab/ShiwuTab.vue'
 
 Vue.use(Router)
 
@@ -42,9 +43,19 @@ export default new Router({
     {
       path: '/shiwu',
       component: Shiwu,
+      redirect: '/shiwu/tab/0',
       meta: {
         showFooter: true
-      }
+      },
+      children:[
+        {
+          path:'/shiwu/tab/:id',
+          component: ShiwuTab,
+          meta: {
+            showFooter: true
+          }
+        }
+      ]
     },
     {
       path: '/shopcar',
